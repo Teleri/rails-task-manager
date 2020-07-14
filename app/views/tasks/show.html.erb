@@ -1,0 +1,8 @@
+<div class="container">
+  <%= @task.title %>
+  <br>
+  <%= @task.details %>
+  <br>
+  <p>Completed: <%= @task.completed %></p>
+  <%= link_to 'Back to list', tasks_path %>
+</div>
