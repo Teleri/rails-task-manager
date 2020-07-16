@@ -1,13 +1,28 @@
-<%= @task.title %>
-<br>
-<%= @task.details %>
-<br>
-<p>Completed: <%= @task.completed %></p>
-<%= link_to 'Edit this task', edit_path(@task) %>
-<br>
-<%= link_to "Delete #{@task.title}",
-            task_path(@task),
-            method: :delete,
-            data: { confirm: "Are you sure?" } %>
-<br>
-<%= link_to 'Back to list', tasks_path %>
+<div class="container">
+  <div class="title">
+    <%= @task.title %>
+  </div>
+  <div class="details">
+    <%= @task.details %>
+  </div>
+  <div class="completed">
+    <% if @task.completed %>
+      <i class="far fa-check-square"> Completed</i>
+    <% else %>
+      <i class="far fa-square"> Completed</i>
+    <% end %>
+  </div>
+  <div class="button">
+    <%= link_to edit_path(@task) do %>
+      <button>Edit</button>
+    <% end %>
+  </div>
+  <div class="delete-button">
+  <%= link_to task_path(@task), method: :delete, data: { confirm: "Are you sure you want to delete?" } do %>
+      <i class="fa fa-trash" aria-hidden="true"> Delete this task</i>
+    <% end %>
+  </div>
+  <div class="back-link">
+    <%= link_to 'Back to list', tasks_path %>
+  </div>
+</div>
