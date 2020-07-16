@@ -1,7 +1,19 @@
-<% @tasks.each do |task| %>
-<% task.completed %>
-<%= link_to task.title, task_path(task) %>
-<br>
+<% if @tasks.any? %>
+  <% @tasks.each do |task| %>
+  <% if task.completed %>
+    <%= "X" %>
+  <% else %>
+    <%= "O" %>
+  <% end %>
+  <%= link_to task.title, task_path(task) %>
+  <%= link_to "Delete",
+            task_path(@task),
+            method: :delete,
+            data: { confirm: "Are you sure?" } %>
+  <br>
+  <% end %>
+<% else %>
+  <p>You have no tasks! Click below to add one.</p>
 <% end %>
-
+<br>
 <%= link_to 'Add a new task', tasks_new_path %>
